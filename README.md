@@ -15,3 +15,4 @@
 ### 3.Some instructions:
 &#8195;(1). At present, only the batch size is 1 and any batch number will be implemented later.<br>&#8195;(2). During the operation, it was found that the result of the loss factor of the original text was too large to affect the network optimization, so the input image was mapped between [-1, 1] (as many seniors did), intuitively It can take into account visual effects and network optimization; for the original vgg structure definition file, the preprocessing part of the image is changed from: MEAN_PIXEL = (123.68,116.779,103.939]) to MEAN_PIXEL = (123.68/127.5-1,116.779/127.5-1,103.939/127.5-1]), but at present the method has not produced definitive results, I sincerely hope to communicate with you!<br>&#8195;(3). [Download vgg](http://www.vlfeat.org/matconvnet/models/beta16/imagenet-vgg-verydeep-19.mat)<br>
 ### 4.Acknowledgement:
+[fast-style-transfer](https://github.com/lengstrom/fast-style-transfer)
