@@ -15,10 +15,10 @@ def conv(name,x,ker_size,outs,s,cur_bin_m,mask_convd,new_bin_m,if_bn=True):
                             tf.initializers.constant(0.))
         return (tf.nn.conv2d(x*cur_bin_m,w,[1,s,s,1],"SAME")*mask_convd+b)*new_bin_m
      
-def bn(name,x,in_train,new_bin_m):
+def ins_norm(name,x,new_bin_m):
     with tf.variable_scope(name):
-        x_bn = tf.contrib.layers.batch_norm(x,scale=True,updates_collections=None,is_training=in_train)
-        return x_bn*new_bin_m
+        x_ins = tf.contrib.layers.instance_norm(x)
+        return x_ins*new_bin_m
         
 def relu(name,x):
     with tf.variable_scope(name):

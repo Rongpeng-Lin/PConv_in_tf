@@ -154,58 +154,58 @@ class Image_inpainting:
             conv1_relu = relu('conv1_relu',conv1)
 
             conv2 = conv('conv2',conv1_relu,5*5,128,2,self.holder[33],self.holder[1],self.holder[34])
-            conv2_bn = bn('conv2_bn',conv2,True,self.holder[34])
+            conv2_bn = ins_norm('conv2_ins',conv2,self.holder[34])
             conv2_relu = relu('conv2_relu',conv2_bn)
 
             conv3 = conv('conv3',conv2_relu,3*3,256,2,self.holder[34],self.holder[2],self.holder[35])
-            conv3_bn = bn('conv3_bn',conv3,True,self.holder[35])
+            conv3_bn = ins_norm('conv3_ins',conv3,self.holder[35])
             conv3_relu = relu('conv3_relu',conv3_bn)
 
             conv4 = conv('conv4',conv3_relu,3*3,512,2,self.holder[35],self.holder[3],self.holder[36])
-            conv4_bn = bn('conv4_bn',conv4,True,self.holder[36])
+            conv4_bn = ins_norm('conv4_ins',conv4,self.holder[36])
             conv4_relu = relu('conv4_relu',conv4_bn)
 
             conv5 = conv('conv5',conv4_relu,3*3,512,2,self.holder[36],self.holder[4],self.holder[37])
-            conv5_bn = bn('conv5_bn',conv5,True,self.holder[37])
+            conv5_bn = ins_norm('conv5_ins',conv5,self.holder[37])
             conv5_relu = relu('conv5_relu',conv5_bn)
 
             conv6 = conv('conv6',conv5_relu,3*3,512,2,self.holder[37],self.holder[5],self.holder[38])
-            conv6_bn = bn('conv6_bn',conv6,True,self.holder[38])
+            conv6_bn = ins_norm('conv6_ins',conv6,self.holder[38])
             conv6_relu = relu('conv6_relu',conv6_bn)
 
             conv7 = conv('conv7',conv6_relu,3*3,512,2,self.holder[38],self.holder[6],self.holder[39])
-            conv7_bn = bn('conv7_bn',conv7,True,self.holder[32])
+            conv7_bn = ins_norm('conv7_ins',conv7,self.holder[32])
             conv7_relu = relu('conv7_relu',conv7_bn)
 
             conv8 = conv('conv8',conv7_relu,3*3,512,2,self.holder[39],self.holder[7],self.holder[40])
             conv8_relu = relu('conv8_relu',conv8)
 
             conv_up7 = conv_up('conv_up7', conv8_relu, self.holder[24], conv7_relu, self.holder[39], self.holder[15], self.holder[32], 3*3, 512, 1)                             
-            conv_up7bn = bn('conv_up7bn',conv_up7,True,self.holder[32])
+            conv_up7bn = ins_norm('conv_up7ins',conv_up7,self.holder[32])
             conv_up7relu = relu('conv_up7relu',conv_up7bn)
 
             conv_up6 = conv_up('conv_up6', conv_up7relu, self.holder[23], conv6_relu, self.holder[38], self.holder[14], self.holder[31], 3*3, 512, 1)                             
-            conv_up6bn = bn('conv_up6bn',conv_up6,True,self.holder[31])
+            conv_up6bn = ins_norm('conv_up6ins',conv_up6,self.holder[31])
             conv_up6relu = relu('conv_up6relu',conv_up6bn)
 
             conv_up5 = conv_up('conv_up5', conv_up6relu, self.holder[22], conv5_relu, self.holder[37], self.holder[13], self.holder[30], 3*3, 512, 1)                             
-            conv_up5bn = bn('conv_up5bn',conv_up5,True,self.holder[30])
+            conv_up5bn = ins_norm('conv_up5ins',conv_up5,self.holder[30])
             conv_up5relu = relu('conv_up5relu',conv_up5bn)
 
             conv_up4 = conv_up('conv_up4', conv_up5relu, self.holder[21], conv4_relu, self.holder[36], self.holder[12], self.holder[29], 3*3, 512, 1)                             
-            conv_up4bn = bn('conv_up4bn',conv_up4,True,self.holder[29])
+            conv_up4bn = ins_norm('conv_up4ins',conv_up4,self.holder[29])
             conv_up4relu = relu('conv_up4relu',conv_up4bn)
 
             conv_up3 = conv_up('conv_up3', conv_up4relu, self.holder[20], conv3_relu, self.holder[35], self.holder[11], self.holder[28], 3*3, 256, 1)                             
-            conv_up3bn = bn('conv_up3bn',conv_up3,True,self.holder[28])
+            conv_up3bn = ins_norm('conv_up3ins',conv_up3,self.holder[28])
             conv_up3relu = relu('conv_up3relu',conv_up3bn)
 
             conv_up2 = conv_up('conv_up2', conv_up3relu, self.holder[19], conv2_relu, self.holder[34], self.holder[10], self.holder[27], 3*3, 128, 1)                             
-            conv_up2bn = bn('conv_up2bn',conv_up2,True,self.holder[27])
+            conv_up2bn = ins_norm('conv_up2ins',conv_up2,self.holder[27])
             conv_up2relu = relu('conv_up2relu',conv_up2bn)
 
             conv_up1 = conv_up('conv_up1', conv_up2relu, self.holder[18], conv1_relu, self.holder[33], self.holder[9], self.holder[26], 3*3, 64, 1)                             
-            conv_up1bn = bn('conv_up1bn',conv_up1,True,self.holder[26])
+            conv_up1bn = ins_norm('conv_up1ins',conv_up1,self.holder[26])
             conv_up1relu = relu('conv_up1relu',conv_up1bn)
 
             conv_up0 = conv_up('conv_up0', conv_up1relu, self.holder[17], x, self.holder[16], self.holder[8], self.holder[25], 3*3, 3, 1)                             
